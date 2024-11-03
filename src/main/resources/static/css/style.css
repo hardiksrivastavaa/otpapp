@@ -18,7 +18,7 @@ body {
 }
 
 .spinav {
-	font-size: 1.3rem;
+	font-size: 1.8rem;
 	font-weight: 700;
 	color: #ef662f;
 }
@@ -58,6 +58,10 @@ body {
 }
 
 @media (max-width: 765px) {
+
+	.spinav {
+	font-size: 1.3rem;
+}
 
 	.studentlogin1,
 	.adminlogin1 {
