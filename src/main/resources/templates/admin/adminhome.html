@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" th:replace="~{admin/adminbase::layout(~{::section})}">
+
+<head>
+</head>
+
+<body>
+	<!-- Main content section for displaying statistical cards -->
+	<section class="container mt-5">
+		<div class="row">
+
+			<!-- Card 1: Total Registered Students -->
+			<div class="col-lg-4 col-md-6">
+				<div class="card shadow"
+					style="background-color: orangered; border-radius: 10px; color: white; padding: 20px; margin-bottom: 20px;">
+					<div class="card-body text-center">
+						<h5 class="card-title" style="font-size: 18px; font-weight: bold;">Total Registered Students
+						</h5>
+						<h2 style="font-size: 36px; font-weight: bold;" th:text="${stdcount}">0</h2>
+					</div>
+				</div>
+			</div>
+
+			<!-- Card 2: Total Complaint Count -->
+			<div class="col-lg-4 col-md-6">
+				<div class="card shadow"
+					style="background-color: orangered; border-radius: 10px; color: white; padding: 20px; margin-bottom: 20px;">
+					<div class="card-body text-center">
+						<h5 class="card-title" style="font-size: 18px; font-weight: bold;">Total Complaint Count</h5>
+						<h2 style="font-size: 36px; font-weight: bold;" th:text="${complaintcount}">0</h2>
+					</div>
+				</div>
+			</div>
+
+			<!-- Card 3: Total Feedback Count -->
+			<div class="col-lg-4 col-md-6">
+				<div class="card shadow"
+					style="background-color: orangered; border-radius: 10px; color: white; padding: 20px; margin-bottom: 20px;">
+					<div class="card-body text-center">
+						<h5 class="card-title" style="font-size: 18px; font-weight: bold;">Total Feedback Count</h5>
+						<h2 style="font-size: 36px; font-weight: bold;" th:text="${feedbackcount}">0</h2>
+					</div>
+				</div>
+			</div>
+
+			<!-- Card 4: Total Enquiry Count -->
+			<div class="col-lg-4 col-md-6">
+				<div class="card shadow"
+					style="background-color: orangered; border-radius: 10px; color: white; padding: 20px; margin-bottom: 20px;">
+					<div class="card-body text-center">
+						<h5 class="card-title" style="font-size: 18px; font-weight: bold;">Total Enquiry Count</h5>
+						<h2 style="font-size: 36px; font-weight: bold;" th:text="${enquirycount}">0</h2>
+					</div>
+				</div>
+			</div>
+
+			<!-- Card 5: Total Questions Count -->
+			<div class="col-lg-4 col-md-6">
+				<div class="card shadow"
+					style="background-color: orangered; border-radius: 10px; color: white; padding: 20px; margin-bottom: 20px;">
+					<div class="card-body text-center">
+						<h5 class="card-title" style="font-size: 18px; font-weight: bold;">Total Questions Count</h5>
+						<h2 style="font-size: 36px; font-weight: bold;" th:text="${qbcount}">0</h2>
+					</div>
+				</div>
+			</div>
+
+			<!-- Card 6: Total Result Count -->
+			<div class="col-lg-4 col-md-6">
+				<div class="card shadow"
+					style="background-color: orangered; border-radius: 10px; color: white; padding: 20px; margin-bottom: 20px;">
+					<div class="card-body text-center">
+						<h5 class="card-title" style="font-size: 18px; font-weight: bold;">Total Result Count</h5>
+						<h2 style="font-size: 36px; font-weight: bold;" th:text="${resultcount}">0</h2>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+</body>
+
+</html>

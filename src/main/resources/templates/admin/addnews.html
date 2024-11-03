@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" th:replace="~{admin/adminbase::layout(~{::section})}">
+    
+<head>
+</head>
+
+<body>
+    <!-- Main container for the form -->
+    <section class="container mt-5 mb-4" 
+             style="max-width: 600px; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        
+        <!-- Success message section -->
+        <div th:if="${successMessage}" class="text-center mt-1 mb-2">
+            <p th:text="${successMessage}" class="alert alert-success" role="alert"></p>
+        </div>
+
+        <!-- Heading for the form -->
+        <h2 class="text-center" style="color: orangered; font-size: 38px; font-weight: bold;">Add News</h2>
+
+        <!-- News submission form -->
+        <form method="post" th:object="${newsDto}">
+            
+            <!-- Input for news title -->
+            <div class="mb-3">
+                <label for="title" class="form-label">Title:</label>
+                <input type="text" id="title" name="title" th:field="*{title}" 
+                       class="form-control" required 
+                       style="border: 1px solid #ddd; border-radius: 4px; padding: 10px;">
+            </div>
+            
+            <!-- Input for news description -->
+            <div class="mb-3">
+                <label for="description" class="form-label">Description:</label>
+                <textarea id="description" name="description" th:field="*{description}" 
+                          class="form-control" required 
+                          style="border: 1px solid #ddd; border-radius: 4px; padding: 10px; resize: vertical; height: 120px;"></textarea>
+            </div>
+            
+            <!-- Submit button -->
+            <button type="submit" class="btn w-25 d-flex justify-content-center text-white" 
+                    style="background-color: orangered; padding: 10px; border-radius: 4px; font-size: 16px; margin: auto;">
+                Submit
+            </button>
+        </form>
+    </section>
+
+</body>
+
+</html>

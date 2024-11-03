@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" th:replace="~{admin/adminbase::layout(~{::section})}">
+
+<head>
+</head>
+
+<body>
+
+    <!-- News Data Section -->
+    <section>
+        <!-- Section Heading -->
+        <h1 class="text-center mb-2" style="color: orangered; font-weight: bolder;">News Data</h1>
+
+        <!-- Table Container (with responsive scrolling) -->
+        <div class="row">
+            <div class="table-responsive" style="width: 100%; overflow-y: auto;">
+
+                <!-- News Data Table -->
+                <table class="table table-bordered">
+                    <!-- Table Header -->
+                    <thead class="table-danger">
+                        <tr>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Published Date</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Table Body (Populated dynamically) -->
+                    <tbody>
+                        <!-- Loop through each news item in the nlist -->
+                        <tr th:each="n:${nlist}">
+
+                            <!-- Display news title -->
+                            <td th:text="${n.title}"></td>
+
+                            <!-- Display news description -->
+                            <td th:text="${n.description}"></td>
+
+                            <!-- Display news published date -->
+                            <td th:text="${n.publishedDate}"></td>
+
+                            <!-- Delete Button with confirmation -->
+                            <td>
+                                <a th:href="@{managenews/delete(resid=${n.id})}">
+                                    <button onclick="return confirm('Are you sure want to delete??')"
+                                        class="btn btn-danger">
+                                        Delete
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

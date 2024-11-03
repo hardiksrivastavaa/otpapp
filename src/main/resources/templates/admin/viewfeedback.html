@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en" th:replace="~{admin/adminbase::layout(~{::section})}">
+
+<head>
+</head>
+
+<body>
+
+    <!-- Feedback Data Section -->
+    <section>
+        <!-- Section Heading -->
+        <h1 class="text-center mb-2" style="color: orangered; font-weight: bolder;">Feedback Data</h1>
+
+        <!-- Table Container with Responsive Scrolling -->
+        <div class="row">
+            <div class="table-responsive" style="width: 100%; overflow-y: auto;">
+
+                <!-- Feedback Table -->
+                <table class="table table-bordered">
+                    <!-- Table Header -->
+                    <thead class="table-danger">
+                        <tr>
+                            <th>Name</th>
+                            <th>Enrollment No</th>
+                            <th>Contact No</th>
+                            <th>Email Address</th>
+                            <th>Feedback Subject</th>
+                            <th>Feedback Message</th>
+                            <th>Feedback Date</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Table Body (Populated dynamically) -->
+                    <tbody>
+                        <!-- Loop through each feedback in flist -->
+                        <tr th:each="f:${flist}">
+                            <!-- Display feedback data -->
+                            <td th:text="${f.name}">Name</td>
+                            <td th:text="${f.enrollmentno}">Enrollment No</td>
+                            <td th:text="${f.contactno}">Contact No</td>
+                            <td th:text="${f.emailaddress}">Email Address</td>
+                            <td th:text="${f.subject}">Feedback Subject</td>
+                            <td th:text="${f.message}">Feedback Message</td>
+                            <td th:text="${f.resdate}">Feedback Date</td>
+
+                            <!-- Delete Button with confirmation -->
+                            <td>
+                                <a th:href="@{viewfeedback/delete(resid=${f.resid})}">
+                                    <button onclick="return confirm('Are you sure you want to delete this feedback?')"
+                                        class="btn btn-danger">
+                                        Delete
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

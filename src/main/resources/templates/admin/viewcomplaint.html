@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" th:replace="~{admin/adminbase::layout(~{::section})}">
+
+<head>
+</head>
+
+<body>
+
+    <!-- Complaint Data Section -->
+    <section>
+        <!-- Section Heading -->
+        <h1 class="text-center mb-2" style="color: orangered; font-weight: bolder;">Complaint Data</h1>
+
+        <!-- Table Container (with responsive scrolling) -->
+        <div class="row">
+            <div class="table-responsive" style="width: 100%; overflow-y: auto;">
+
+                <!-- Complaints Table -->
+                <table class="table table-bordered">
+                    <!-- Table Header -->
+                    <thead class="table-danger">
+                        <tr>
+                            <th>Name</th>
+                            <th>Enrollment No</th>
+                            <th>Contact No</th>
+                            <th>Email Address</th>
+                            <th>Feedback Subject</th>
+                            <th>Feedback Message</th>
+                            <th>Feedback Date</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Table Body (Populated dynamically) -->
+                    <tbody>
+                        <!-- Loop through each complaint in the clist -->
+                        <tr th:each="c:${clist}">
+                            <!-- Display complaint data -->
+                            <td th:text="${c.name}">Name</td>
+                            <td th:text="${c.enrollmentno}">Enrollment No</td>
+                            <td th:text="${c.contactno}">Contact No</td>
+                            <td th:text="${c.emailaddress}">Email Address</td>
+                            <td th:text="${c.subject}">Feedback Subject</td>
+                            <td th:text="${c.message}">Feedback Message</td>
+                            <td th:text="${c.resdate}">Feedback Date</td>
+
+                            <!-- Delete Button with confirmation -->
+                            <td>
+                                <a th:href="@{viewcomplaint/delete(resid=${c.resid})}">
+                                    <button onclick="return confirm('Are you sure want to delete?')"
+                                        class="btn btn-danger">
+                                        Delete
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+    </section>
+
+</body>
+
+</html>

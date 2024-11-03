@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{student/studentbase::layout(~{::section})}">
+
+<head>
+</head>
+
+<body style="font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background-color: #f3f4f6;">
+
+    <!-- Main section with background and padding -->
+    <section style="padding: 80px 0; background: #f8781f; border-radius: 5px;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-6">
+                    <!-- Card displaying result or test prompt -->
+                    <div class="card shadow-lg text-center p-4"
+                        style="background-color: white; border: none; border-radius: 15px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);">
+
+                        <!-- Conditional message after the test is completed -->
+                        <div th:if="${result}">
+                            <!-- Success message -->
+                            <h3 style="font-size: 24px; font-weight: bold; color: #16a34a;">Congratulations!</h3>
+                            <!-- Informational message about test completion -->
+                            <p style="font-size: 18px; font-weight: 500; color: #333;">You have successfully completed
+                                the test.</p>
+                            <!-- Displaying the user's score and total marks -->
+                            <p style="font-size: 22px; color: #16a34a; font-weight: 600;">
+                                You scored <span style="font-size: 24px; color: #2563eb; font-weight: 700;"
+                                    th:text="${result.getmarks}"></span>
+                                out of <span style="font-size: 24px; color: #2563eb; font-weight: 700;"
+                                    th:text="${result.totalmarks}"></span>.
+                            </p>
+                            <!-- Encouragement message -->
+                            <p style="font-size: 18px; color: #555;">Keep up the great work and aim for even better
+                                scores in the future!</p>
+                        </div>
+
+                        <!-- Conditional message before the test starts -->
+                        <div th:unless="${result}">
+                            <!-- Prompt to start the test -->
+                            <h3 style="font-size: 24px; font-weight: bold; color: #f8781f;">Ready to take the test?</h3>
+                            <!-- Informational message encouraging the user to start the test -->
+                            <p style="font-size: 18px; font-weight: 500; color: #555;">
+                                Your result will be displayed here once you successfully complete the test.
+                                <br /> Be confident, do your best, and you’ll see your results soon!
+                            </p>
+                            <!-- Motivational message about self-improvement through testing -->
+                            <p style="font-size: 18px; font-weight: 500; color: #555;">
+                                Remember, every test is a new opportunity to improve and challenge yourself.
+                            </p>
+                            <!-- Button to start the test -->
+                            <a href="givetest" class="btn btn-primary"
+                                style="background-color: #f8781f; border: none; padding: 10px 20px; border-radius: 50px;">Start
+                                the test</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

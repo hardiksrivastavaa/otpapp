@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" th:replace="~{admin/adminbase::layout(~{::section})}">
+
+<head>
+</head>
+
+<body>
+
+    <!-- Enquiry Data Section -->
+    <section>
+        <!-- Section Heading -->
+        <h1 class="text-center mb-2" style="color: orangered; font-weight: bolder;">Enquiry Data</h1>
+
+        <!-- Table Container with Responsive Scrolling -->
+        <div class="row">
+            <div class="table-responsive" style="width: 100%; overflow-y: auto;">
+
+                <!-- Enquiry Table -->
+                <table class="table table-bordered">
+                    <!-- Table Header -->
+                    <thead class="table-danger">
+                        <tr>
+                            <th>Name</th>
+                            <th>Gender</th>
+                            <th>Contact No</th>
+                            <th>Email Address</th>
+                            <th>Query</th>
+                            <th>Query Date</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Table Body (Populated dynamically) -->
+                    <tbody>
+                        <!-- Loop through each enquiry in eqlist -->
+                        <tr th:each="e:${eqlist}">
+                            <!-- Display enquiry data -->
+                            <td th:text="${e.name}">Name</td>
+                            <td th:text="${e.gender}">Gender</td>
+                            <td th:text="${e.contactNo}">Contact No</td>
+                            <td th:text="${e.emailAddress}">Email Address</td>
+                            <td th:text="${e.enquiryText}">Query</td>
+                            <td th:text="${e.postedDate}">Query Date</td>
+
+                            <!-- Delete Button with confirmation -->
+                            <td>
+                                <a th:href="@{viewenquery/delete(id=${e.id})}">
+                                    <button onclick="return confirm('Are you sure you want to delete?')"
+                                        class="btn btn-danger">
+                                        Delete
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

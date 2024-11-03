@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{student/studentbase::layout(~{::section})}">
+<!-- Specifies the document type and sets up a layout using Thymeleaf template engine -->
+
+<head> </head>
+
+<body>
+    <!-- Container for the form section with a card-like appearance -->
+    <section class="container mt-5 mb-4" style="
+        max-width: 800px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      ">
+        <!-- Display success message if 'msg' is present in the model (Thymeleaf integration) -->
+        <div th:if="${msg}" class="text-center mt-1 mb-2">
+            <p th:text="${msg}" class="alert alert-success" role="alert"></p>
+        </div>
+
+        <!-- Heading for the form -->
+        <h1 style="
+          color: orangered;
+          text-align: center;
+          font-weight: bold;
+          margin-bottom: 20px;
+        ">
+            Give Response
+        </h1>
+
+        <!-- Response Form -->
+        <form action="#" method="post" th:object="${dto}" class="form-group">
+            <!-- Form bound to 'dto' object in Thymeleaf -->
+
+            <!-- Response Type Field (Dropdown to select feedback or complaint) -->
+            <div class="mb-3">
+                <label for="responseType" style="font-weight: bold">Select Response Type</label>
+                <select id="responseType" th:field="${dto.responsetype}" class="form-control" required>
+                    <option value="feedback">Feedback</option>
+                    <option value="complaint">Complaint</option>
+                </select>
+            </div>
+
+            <!-- Subject Field (Text input for the subject of the response) -->
+            <div class="mb-3">
+                <label for="subject" style="font-weight: bold">Enter Response Subject</label>
+                <input type="text" id="subject" th:field="${dto.subject}" placeholder="Enter response subject" required
+                    class="form-control" />
+            </div>
+
+            <!-- Message Field (Textarea for the detailed response message) -->
+            <div class="mb-4">
+                <label for="message" style="font-weight: bold">Enter Response Message</label>
+                <textarea id="message" th:field="${dto.message}" placeholder="Enter message" class="form-control"
+                    rows="5" required></textarea>
+            </div>
+
+            <!-- Submit Button (Button to submit the form) -->
+            <div class="text-center d-flex justify-content-center p-2">
+                <button type="submit" class="btn w-25 text-white" style="
+              background-color: orangered;
+              border-radius: 4px;
+              font-size: 16px;
+            ">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </section>
+</body>
+
+</html>

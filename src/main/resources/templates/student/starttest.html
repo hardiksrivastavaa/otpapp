@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{student/studentbase::layout(~{::section})}">
+<!-- Root HTML element with Thymeleaf layout replacement -->
+
+<head> </head>
+
+<body>
+    <section>
+        <!-- Main section for the content -->
+        <div class="row m-2 card shadow">
+            <!-- Container for the card with some margin and shadow -->
+            <div class="col-sm-12">
+                <!-- Hidden input to store JSON data, accessible via Thymeleaf variable 'json' -->
+                <input type="hidden" id="jsonData" th:value="${json}" />
+                <div class="container-fluid px-5">
+                    <!-- Container for padding and layout control -->
+                    <div class="row d-flex justify-content-between align-items-center mb-2 mt-3">
+                        <!-- Row for displaying total allotted time and questions -->
+                        <div class="col-sm-6 text-left">
+                            <!-- Left side: Displaying total allotted time -->
+                            <b>Total Allotted Time :</b>
+                            <label id="TTime" class="form-label">
+                                <!-- Thymeleaf variable 'tt' for displaying time -->
+                                <span th:text="${tt}"></span> minutes
+                            </label>
+                        </div>
+                        <div class="col-sm-6 text-right">
+                            <!-- Right side: Displaying total allotted questions -->
+                            <b>Total Allotted Question :</b>
+                            <label th:text="${tq}" id="TQuestion" class="form-label"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Row for displaying the current question -->
+                        <div class="col-sm-12 p-4" style="background-color: orangered">
+                            <!-- Display question number and question text -->
+                            <span style="color: white">
+                                <label id="lblqno" style="font-size: 23px; font-weight: 600"></label>
+                            </span>
+                            <span style="color: white">
+                                <label id="lblquestion" style="font-size: 23px; font-weight: 600"></label>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <!-- Row for displaying option A -->
+                        <div class="col-sm-12 p-1">
+                            <div class="alert alert-secondary px-5 pt-4">
+                                <h6>
+                                    <!-- Option A radio button -->
+                                    <input type="radio" id="a" class="form-check-input" name="option" value="A" />
+                                    &nbsp;&nbsp;
+                                    <!-- Label for option A -->
+                                    <label class="form-label" style="font-size: 20px" for="A" id="lblA"></label>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <!-- Row for displaying option B -->
+                        <div class="col-sm-12 p-1">
+                            <div class="alert alert-secondary px-5 pt-4">
+                                <h6>
+                                    <!-- Option B radio button -->
+                                    <input type="radio" id="b" class="form-check-input" name="option" value="B" />
+                                    &nbsp;&nbsp;
+                                    <!-- Label for option B -->
+                                    <label class="form-label" style="font-size: 20px" for="B" id="lblB"></label>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <!-- Row for displaying option C -->
+                        <div class="col-sm-12 p-1">
+                            <div class="alert alert-secondary px-5 pt-4">
+                                <h6>
+                                    <!-- Option C radio button -->
+                                    <input type="radio" id="c" class="form-check-input" name="option" value="C" />
+                                    &nbsp;&nbsp;
+                                    <!-- Label for option C -->
+                                    <label class="form-label" style="font-size: 20px" for="C" id="lblC"></label>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <!-- Row for displaying option D -->
+                        <div class="col-sm-12 p-1">
+                            <div class="alert alert-secondary px-5 pt-4">
+                                <h6>
+                                    <!-- Option D radio button -->
+                                    <input type="radio" id="d" class="form-check-input" name="option" value="D" />
+                                    &nbsp;&nbsp;
+                                    <!-- Label for option D -->
+                                    <label class="form-label" style="font-size: 20px" for="D" id="lblD"></label>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-between align-items-center mt-2 mb-3">
+                        <!-- Row for displaying timer and the next button -->
+                        <div class="col-sm-6">
+                            <!-- Left side: Displaying the time left -->
+                            <span style="font-size: 18px; font-weight: 600">
+                                Time Left:
+                                <label id="timer" style="font-size: 18px; font-weight: 600"></label>
+                            </span>
+                        </div>
+                        <div class="col-sm-6 text-right">
+                            <!-- Right side: 'Next' button -->
+                            <button type="button" id="ButtonNext" class="btn px-5 text-white"
+                                style="background-color: orangered">
+                                Next
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Script file for the exam functionality -->
+        <script src="/js/exam.js" type="text/javascript"></script>
+    </section>
+</body>
+
+</html>

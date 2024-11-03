@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{student/studentbase::layout(~{::section})}">
+
+<head>
+</head>
+
+<body>
+	<section class="container my-5">
+		<!-- Main content container with margin top and bottom -->
+		<div class="row">
+
+			<!-- Success message section -->
+			<div th:if="${msg}" class="text-center mt-1">
+				<!-- Displays a success message if 'msg' is present -->
+				<p th:text="${msg}" class="alert alert-success"></p>
+			</div>
+
+			<!-- Marquee section for helpline number and email -->
+			<div class="col-sm-12">
+				<div class="text-white p-3 rounded-3" style="background-color: orangered">
+					<!-- A scrolling marquee with helpline contact info -->
+					<marquee behavior="alternate" class="fw-bold">
+						For any query, reach us through our helpline number:
+						<span><i class="fas fa-phone"></i> 9454084445</span> |
+						<span><i class="fas fa-envelope"></i> hr@softproindia.in</span>
+					</marquee>
+				</div>
+			</div>
+
+			<!-- Main content area -->
+			<div class="col-sm-12 mt-4">
+				<div class="row g-4">
+
+					<!-- Student Info Card -->
+					<div class="col-md-7">
+						<div class="card shadow-lg">
+							<!-- Card header displaying student name -->
+							<div class="card-header text-center text-white fw-bold" style="background-color: orangered">
+								Hello, <span th:text="${sInfo.name}"></span>
+							</div>
+							<div class="card-body">
+								<div class="row align-items-center">
+									<!-- Profile image -->
+									<div class="col-md-4 text-center">
+										<div th:if="${sInfo.profilepic}">
+											<!-- Displays the student's profile picture if available -->
+											<img th:src="@{'/user/' + ${sInfo.profilepic}}" class="img-fluid border"
+												style="width: 150px; height: 148px; object-fit: cover; border-color: orangered; border-radius: 10px;"
+												alt="Profile picture not found" />
+										</div>
+										<div th:unless="${sInfo.profilepic}">
+											<!-- Default user profile picture if none is provided -->
+											<img src="../images/userimg.png" class="img-fluid rounded-circle border"
+												style="width: 100px; height: 100px; object-fit: cover; border-color: orangered;"
+												alt="Profile not available" />
+										</div>
+									</div>
+
+									<!-- Student details -->
+									<div class="col-md-8">
+										<p>
+											<i class="fas fa-user-tie" style="color: orangered"></i>
+											<span th:text="${sInfo.name}"></span>
+										</p>
+										<p>
+											<i class="fas fa-graduation-cap" style="color: orangered"></i>
+											<span th:text="${sInfo.branch}"></span>
+										</p>
+										<p>
+											<i class="fas fa-envelope" style="color: orangered"></i>
+											<span th:text="${sInfo.emailaddress}"></span>
+										</p>
+										<p>
+											<i class="fas fa-phone" style="color: orangered"></i>
+											<span th:text="${sInfo.contactno}"></span>
+										</p>
+									</div>
+								</div>
+
+								<!-- Profile picture upload form -->
+								<div class="row mt-4">
+									<form method="post" th:object="${dto}" enctype="multipart/form-data"
+										class="d-flex justify-content-center">
+										<!-- Allows the user to upload a new profile picture -->
+										<input type="file" th:field="${dto.profilepic}" class="form-control me-2"
+											required />
+										<!-- Submit button to update the profile picture -->
+										<button type="submit" class="btn text-white"
+											style="background-color: orangered">
+											Update
+										</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- More Details Card -->
+					<div class="col-md-5">
+						<div class="card shadow-lg">
+							<!-- Card header for additional student details -->
+							<div class="card-header text-center text-white fw-bold" style="background-color: orangered">
+								More Details
+							</div>
+							<div class="card-body">
+								<p>
+									<i class="fas fa-building" style="color: orangered"></i>
+									<span th:text="${sInfo.collegename}"></span>
+								</p>
+								<p>
+									<i class="fas fa-calendar-alt" style="color: orangered"></i>
+									<span th:text="${sInfo.year}"></span>
+								</p>
+								<p>
+									<i class="fas fa-info-circle" style="color: orangered"></i>
+									<span th:text="${sInfo.trainingmode}"></span>
+								</p>
+								<p>
+									<i class="fas fa-map-marker-alt" style="color: orangered"></i>
+									<span th:text="${sInfo.traininglocation}"></span>
+								</p>
+								<p>
+									<i class="fas fa-briefcase" style="color: orangered"></i>
+									<span th:text="${sInfo.branch}"></span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Latest News Section -->
+			<div class="col-sm-12 mt-4">
+				<div class="row g-4">
+					<div class="col-md-12">
+						<div class="card shadow-lg">
+							<!-- Latest news section header -->
+							<div class="card-header text-center text-white fw-bold" style="background-color: orangered">
+								Latest News Updates
+							</div>
+							<div class="card-body">
+								<div class="row">
+									<div class="col-md-12">
+										<ul class="list-unstyled">
+											<!-- Loop through each news item in the newsList and display it -->
+											<li th:each="news : ${newsList}" class="mb-3">
+												<div class="card shadow-sm">
+													<div class="card-body">
+														<h4 class="card-title fw-bold" th:text="${news.title}"></h4>
+														<p class="card-text" th:text="${news.description}"></p>
+														<small class="text-muted fw-bold">Published on:
+															<span th:text="${news.publishedDate}"></span>
+														</small>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+</body>
+
+</html>

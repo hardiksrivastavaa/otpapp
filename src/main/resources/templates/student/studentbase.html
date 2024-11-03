@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+
+<head>
+    <!-- Character encoding for the document -->
+    <meta charset="utf-8">
+
+    <!-- Ensures compatibility with IE browsers -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Responsive viewport settings -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Description and author metadata -->
+    <meta name="description" content="Online Test Portal">
+    <meta name="author" content="Hardik Srivastava">
+
+    <!-- Title of the web page -->
+    <title>Student Zone | Online Test Portal</title>
+
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- DataTables CSS for enhanced table functionality -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
+
+    <!-- Bootstrap JS bundle (for JavaScript components) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap JS for the latest version -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Additional custom CSS -->
+    <link rel="stylesheet" href="../css/student.css">
+    <link href="../assest/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../assest/css/mycss.css" type="text/css" rel="stylesheet" />
+    <link href="../assest/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+</head>
+
+<body id="page-top" oncopy="return false" oncut="return false" onpaste="return false">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper" style="position: relative;">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav sticky-top sidebar sidebar-dark accordion" id="accordionSidebar"
+            style="background-color: #ef662f;">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+
+                <div class="sidebar-brand-text mx-3">Student Dashboard</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider mb-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="studenthome">
+                    <i class="fa-solid fa-tachometer-alt"></i>
+                    <span style="font-size: 15px">Dashboard</span>
+                </a>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider mb-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="givetest">
+                    <i class="fa-solid fa-pen-fancy"></i>
+                    <span style="font-size: 15px">Give Test</span>
+                </a>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider mb-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="response">
+                    <i class="fa-solid fa-reply"></i>
+                    <span style="font-size: 15px">Give response</span>
+                </a>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider mb-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="trainingvideos">
+                    <i class="fa-solid fa-video"></i>
+                    <span style="font-size: 15px">Training VIdeos</span>
+                </a>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider mb-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="viewresult">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span style="font-size: 15px">View Result</span>
+                </a>
+            </li>
+        </ul>
+
+        <!-- End of Sidebar -->
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light  topbar mb-4 static-top shadow brown">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Search -->
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <!-- Nav Item - Alerts -->
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small " style="font-size: 17px;">
+                                </span>
+                                <img class="img-profile rounded-circle" src="../assest/img/userimg.png"
+                                    alt="Profile not available" />
+
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="changepassword">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Change Password
+                                </a>
+
+                                <a class="dropdown-item" href="logout" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                    <div th:replace="${content}"></div>
+                </div>
+            </div>
+            <!-- End of Main Content -->
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span style="font-size: 15px;">Copyright &copy; 2024 Developed by Hardik Srivastava</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="logout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DataTables JavaScript library for enhanced table functionality -->
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+    <!-- jQuery library for general use -->
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+    <!-- DataTables JavaScript (version 1.10.20) for table enhancements -->
+    <script type="text/javascript" language="javascript"
+        src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+    <!-- DataTables Buttons extension for exporting functionality -->
+    <script type="text/javascript" language="javascript"
+        src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+
+    <!-- DataTables Buttons extension for Flash support -->
+    <script type="text/javascript" language="javascript"
+        src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script>
+
+    <!-- JSZip library for creating .xlsx files -->
+    <script type="text/javascript" language="javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+
+    <!-- pdfMake library for generating PDF files -->
+    <script type="text/javascript" language="javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+
+    <!-- Virtual file system fonts for pdfMake -->
+    <script type="text/javascript" language="javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+
+    <!-- DataTables Buttons extension for exporting to HTML5 format -->
+    <script type="text/javascript" language="javascript"
+        src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+
+    <!-- DataTables Buttons extension for print functionality -->
+    <script type="text/javascript" language="javascript"
+        src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
+
+    <script type="text/javascript" class="init">
+        // Initialize the DataTable when the document is ready
+        $(document).ready(function () {
+            $('#example').DataTable({
+                // Define the layout and available buttons for export
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print', 'pageLength' // Export options
+                ],
+                // Define the number of entries to display and options
+                lengthMenu: [
+                    [10, 25, 50, 100, -1], // Values for entries
+                    ['10', '25', '50', '100', 'all'] // Labels for entries
+                ]
+            });
+        });
+
+        // Disable the context menu on right-click
+        document.addEventListener('contextmenu', function (event) {
+            event.preventDefault(); // Prevent default context menu
+            console.log('Right-click context menu is disabled.'); // Log to console
+        });
+    </script>
+
+    <!-- jQuery vendor script for other functionalities -->
+    <script src="../assest/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap bundle JavaScript for responsive components -->
+    <script src="../assest/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- jQuery Easing plugin for smooth scrolling -->
+    <script src="../assest/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom script for admin panel functionalities -->
+    <script src="../assest/js/sb-admin-2.min.js"></script>
+
+    <!-- Chart.js library for charting functionalities -->
+    <script src="../assest/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Demo scripts for area and pie charts -->
+    <script src="../assest/js/demo/chart-area-demo.js"></script>
+    <script src="../assest/js/demo/chart-pie-demo.js"></script>
+
+</body>
+
+</html>

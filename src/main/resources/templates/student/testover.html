@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{student/studentbase::layout(~{::section})}">
+
+<head>
+</head>
+
+<body>
+    <!-- Main section with light background -->
+    <section class="bg-light">
+
+        <!-- Row to center the content and apply padding -->
+        <div class="row justify-content-center p-5">
+            <!-- Column to control the width of the card -->
+            <div class="col-sm-8">
+                <!-- Card with shadow, centered text, padding, and rounded corners -->
+                <div class="card shadow-lg text-center p-5" style="border-radius: 20px;">
+                    <!-- Heading with customized font and style for the congratulatory message -->
+                    <h1 class="text-orangered"
+                        style="font-family: 'Monotype Corsiva', cursive; font-size: 50px; font-style: italic;">
+                        Congratulations!!!
+                    </h1>
+                    <!-- Paragraph with success message and instructions -->
+                    <p style="font-size: 20px;" class="text-muted">
+                        Your test has been submitted successfully.<br>
+                        You can see your result in your dashboard.
+                    </p>
+                    <!-- Button linking to the student's dashboard -->
+                    <div class="mt-4">
+                        <a href="studenthome" class="btn btn-danger w-25 rounded-pill text-white"
+                            style="background-color: orangered;">
+                            Go to Dashboard
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</body>
+
+</html>

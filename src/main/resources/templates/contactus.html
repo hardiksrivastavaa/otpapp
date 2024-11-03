@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en" th:replace="~{base::layout(~{::section})}">
+
+<head>
+</head>
+
+<body>
+
+	<section>
+		<div class="row p-3 text-center" style="background-color:#ef662f;">
+			<div class="col-sm-12">
+				<h2 class="fw-bold text-white">Contact Us</h2> <!-- Heading for Contact Us section -->
+			</div>
+		</div>
+
+		<div class="container col-sm-5 justify-content-between">
+			<form action="#" th:object="${dto}" method="post"> <!-- Form to submit contact information -->
+				<div class="form-horizontal mt-4 mb-4">
+					<div class="border p-5 shadow-lg">
+
+						<div th:if="${message}" class="text-center">
+							<p th:text="${message}" class="alert alert-success alert-dismissible"></p>
+							<!-- Success message display -->
+						</div>
+
+						<!-- Form First Row -->
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<p class="fw-bold">Name *</p>
+									<input class="form-control text-box single-line" th:field="${dto.name}"
+										placeholder="Enter Your Name" required
+										style="height:50px; border-radius:0px; border:1px solid black;" type="text" />
+								</div>
+							</div>
+						</div>
+
+						<!-- Form Second Row -->
+						<div class="row">
+							<div class="col-md-12 mt-3">
+								<div class="form-group">
+									<p class="fw-bold">Gender *</p>
+									<input type="radio" value="female" class="mx-2" th:field="${dto.gender}"
+										required />Female
+									<input type="radio" value="male" class="mx-2" th:field="${dto.gender}"
+										required />Male
+								</div>
+							</div>
+						</div>
+
+						<!-- Form Third Row -->
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<p class="fw-bold mt-4">Contact Number *</p>
+									<input class="form-control text-box single-line" th:field="${dto.contactNo}"
+										placeholder="Enter Your Contact Number" required
+										style="height:50px; border-radius:0px; border:1px solid black;" type="number" />
+								</div>
+							</div>
+						</div>
+
+						<!-- Form Fourth Row -->
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<p class="fw-bold mt-4">Email *</p>
+									<input class="form-control text-box single-line" th:field="${dto.emailAddress}"
+										placeholder="Enter Your E-mail" required
+										style="height:50px; border-radius:0px; border:1px solid black;" type="email" />
+								</div>
+							</div>
+						</div>
+
+						<!-- Form Fifth Row -->
+						<div class="row">
+							<div class="col-md-12 mt-3">
+								<div class="form-group">
+									<p class="fw-bold">Your Query *</p>
+									<textarea class="form-control text-box single-line" th:field="${dto.enquiryText}"
+										placeholder="Enter Your Query" required
+										style="height:50px; border-radius:0px; border:1px solid black;"></textarea>
+								</div>
+							</div>
+						</div>
+
+						<!-- Submit/Reset Buttons -->
+						<div class="form-group">
+							<div class="col-md-offset-2 col-md-12 mt-3 mb-3 text-center">
+							<input type="submit" value="SUBMIT" class="btn register-btn"
+									style="background-color: orangered; color: white;"/>
+							<input type="reset" class="btn register-btn" style="background-color: dimgray; color: white;" />
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+
+</body>
+
+</html>

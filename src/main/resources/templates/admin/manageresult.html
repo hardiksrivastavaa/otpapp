@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" th:replace="~{admin/adminbase::layout(~{::section})}">
+
+<head>
+</head>
+
+<body>
+
+    <!-- Students Result Data Section -->
+    <section>
+        <!-- Section Heading -->
+        <h1 class="text-center mb-2" style="color: orangered; font-weight: bolder;">Students Result Data</h1>
+
+        <!-- Table Container (with responsive scrolling) -->
+        <div class="row">
+            <div class="table-responsive" style="width: 100%; height: 90vh; overflow-y: auto;">
+
+                <!-- Students Result Table -->
+                <table class="table table-bordered">
+                    <!-- Table Header -->
+                    <thead class="table-danger">
+                        <tr>
+                            <th>Name</th>
+                            <th>Email Address</th>
+                            <th>Contact No</th>
+                            <th>College/University</th>
+                            <th>Course</th>
+                            <th>Branch</th>
+                            <th>Year</th>
+                            <th>Total Marks</th>
+                            <th>Get Marks</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Table Body (Populated dynamically) -->
+                    <tbody>
+                        <!-- Loop through each student result in the rList -->
+                        <tr th:each="r:${rList}">
+                            <!-- Display student name -->
+                            <td th:text="${r.name}">Name</td>
+
+                            <!-- Display student email address -->
+                            <td th:text="${r.emailaddress}">Email Address</td>
+
+                            <!-- Display student contact number -->
+                            <td th:text="${r.contactno}">Contact No</td>
+
+                            <!-- Display college/university name -->
+                            <td th:text="${r.collegename}">College/University</td>
+
+                            <!-- Display course name -->
+                            <td th:text="${r.course}">Course</td>
+
+                            <!-- Display branch name -->
+                            <td th:text="${r.branch}">Branch</td>
+
+                            <!-- Display year of study -->
+                            <td th:text="${r.year}">Year</td>
+
+                            <!-- Display total marks -->
+                            <td th:text="${r.totalmarks}">Total Marks</td>
+
+                            <!-- Display marks obtained -->
+                            <td th:text="${r.getmarks}">Get Marks</td>
+
+                            <!-- Delete Button with confirmation -->
+                            <td>
+                                <a th:href="@{manageresult/delete(email=${r.emailaddress})}">
+                                    <button onclick="return confirm('Are you sure you want to delete this record?')"
+                                        class="btn btn-danger">
+                                        Delete
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

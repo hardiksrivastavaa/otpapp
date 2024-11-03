@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en" th:replace="~{admin/adminbase::layout(~{::section})}">
+
+<head>
+</head>
+
+<body>
+
+    <!-- Main content section with a styled container for the form -->
+    <section class="container mt-5 mb-4"
+        style="max-width: 800px; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+
+        <!-- Conditional message display if a success message exists -->
+        <div th:if="${msg}" class="text-center mt-1 mb-2">
+            <p th:text="${msg}" class="alert alert-success" role="alert"></p>
+        </div>
+
+        <!-- Title of the form -->
+        <h1 style="color: orangered; text-align: center; font-weight: bold; margin-bottom: 20px;">Add Question Bank</h1>
+
+        <!-- Form for adding a question bank -->
+        <form action="#" class="form-group" method="post" th:object="${dto}">
+
+            <!-- Year Selection Dropdown -->
+            <div class="mb-3">
+                <label for="year" style="font-weight: bold;">Select Year</label>
+                <select class="form-control" id="year" th:field="${dto.year}" required>
+                    <option value="">Select Year</option>
+                    <option value="1st year">First Year</option>
+                    <option value="2nd year">Second Year</option>
+                    <option value="3rd year">Third Year</option>
+                </select>
+            </div>
+
+            <!-- Question Input Field -->
+            <div class="mb-3">
+                <label for="question" style="font-weight: bold;">Enter Question</label>
+                <textarea class="form-control" id="question" th:field="${dto.question}" rows="4" required></textarea>
+            </div>
+
+            <!-- Answer A Input Field -->
+            <div class="mb-3">
+                <label for="a" style="font-weight: bold;">A</label>
+                <textarea class="form-control" id="a" th:field="${dto.a}" rows="2" required></textarea>
+            </div>
+
+            <!-- Answer B Input Field -->
+            <div class="mb-3">
+                <label for="b" style="font-weight: bold;">B</label>
+                <textarea class="form-control" id="b" th:field="${dto.b}" rows="2" required></textarea>
+            </div>
+
+            <!-- Answer C Input Field -->
+            <div class="mb-3">
+                <label for="c" style="font-weight: bold;">C</label>
+                <textarea class="form-control" id="c" th:field="${dto.c}" rows="2" required></textarea>
+            </div>
+
+            <!-- Answer D Input Field -->
+            <div class="mb-3">
+                <label for="d" style="font-weight: bold;">D</label>
+                <textarea class="form-control" id="d" th:field="${dto.d}" rows="2" required></textarea>
+            </div>
+
+            <!-- Correct Option Selection Dropdown -->
+            <div class="mb-3">
+                <label for="correct" style="font-weight: bold;">Correct Option</label>
+                <select class="form-control" id="correct" th:field="${dto.correct}" required>
+                    <option value="">Select Correct Option</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="mb-3">
+                <button type="submit" class="btn w-25 d-flex justify-content-center text-white"
+                    style="background-color: orangered; padding: 10px; border-radius: 4px; font-size: 16px; margin: auto;">
+                    Add Question
+                </button>
+            </div>
+
+        </form>
+
+
+    </section>
+
+
+</body>
+
+</html>

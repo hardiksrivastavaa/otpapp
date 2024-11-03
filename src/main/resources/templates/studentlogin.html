@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" th:replace="~{base::layout(~{::section})}">
+
+<head>
+</head>
+
+<body>
+
+    <section>
+
+        <div class="row p-3 text-center" style="background-color:#ef662f;">
+            <div class="col-sm-12">
+                <h2 class="fw-bold text-white">Student Login Panel</h2> 
+            </div>
+        </div>
+
+        <div class="row px-4 py-2 px-md-5 text-center text-lg-start"
+            style="background-color: hsl(0, 0%, 96%); height:auto;">
+
+            <div class="container">
+
+                <div class="row gx-lg-5 align-items-center">
+                    
+                    <div class="col-lg-6 mb-5 mb-lg-0 studentlogin">
+                        <div class="row p-2">
+                            <img src="images/login.png" class="h-70" alt="otp">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 mb-5 mb-lg-0 studentlogin1">
+                        <div class="card shadow">
+                            <div class="card-body py-5 px-md-5">
+                                <div th:if="${msg}" class="text-center">
+                                    <p th:text="${msg}" class="alert alert-success alert-dismissible"></p>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12 text-center mb-3">
+                                        <h1 class="my-auto mb-2 display-7 text-center fw-bold ls-tight"
+                                            style="font-size:38px;">
+                                            <span style="color: #ef662f;">Login Here</span>
+                                        </h1>
+                                        <br />
+                                    </div>
+
+
+                                    <form action="#" th:object="${dto}" method="post" class="mt-2">
+                                        <div class="col-md-12 mb-4" style="margin-top:-20px;">
+                                            <label class="form-label d-flex justify-content-start"
+                                                for="username">Email*</label>
+                                            <div class="form-outline">
+                                                <input name="username" type="email" id="username" class="form-control"
+                                                    th:field="${dto.emailaddress}"
+                                                    placeholder="Enter Your Registered Email" required
+                                                    style="height:60px; border-radius:0px;" />
+                                                <span style="color:Red;visibility:hidden;">*</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12 mb-2" style="margin-top:-30px;">
+                                            <label class="form-label d-flex justify-content-start"
+                                                for="password">Password *</label>
+                                            <div class="form-outline">
+                                                <input name="Password" id="password" th:field="${dto.password}" required
+                                                    type="password" class="form-control"
+                                                    placeholder="Enter Your Password"
+                                                    style="height:60px; border-radius:0px;" />
+                                                <span style="color:Red;visibility:hidden;">*</span>
+                                            </div>
+                                        </div>
+
+                                        <input type="submit" value="Login"
+                                            style="height: 50px; width: 92%; background-color: #ef672e; border:0px; border-radius:5px; color:white;" />
+                                    </form>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </section>
+</body>
+
+</html>
