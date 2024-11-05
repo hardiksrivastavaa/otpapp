@@ -165,18 +165,38 @@
 
 		</div>
 
+
 <script>
 function validateFileSize() {
     const fileInput = document.getElementById("profilepic");
     const file = fileInput.files[0];
     
-    if (file && file.size > 1 * 1024 * 1024) { // 1MB = 1 * 1024 * 1024 bytes
-        alert("File size is too large! Please upload an image smaller than 1MB.");
-        return false; // Prevent form submission
+    if (file) {
+        const maxFileSize = 1 * 1024 * 1024; // 1MB in bytes
+        const allowedTypes = ["image/jpeg", "image/png", "image/gif", "image/webp", "image/jpg"];
+
+        // Check file size
+        if (file.size > maxFileSize) {
+            // Check if it's an image file or something else
+            if (!allowedTypes.includes(file.type)) {
+                alert("File too large and unsupported type! Please upload an image file under 1MB.");
+            } else {
+                alert("File size is too large! Please upload an image smaller than 1MB.");
+            }
+            return false; // Prevent form submission
+        }
+
+        // Check file type if file size is within the limit
+        if (!allowedTypes.includes(file.type)) {
+            alert("Unsupported file type! Please upload a valid image file (JPEG, PNG, GIF, WEBP, JPG).");
+            return false; // Prevent form submission
+        }
     }
-    return true; // Allow form submission
+
+    return true; // Allow form submission if checks pass
 }
 </script>
+
 
 	</section>
 </body>
