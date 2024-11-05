@@ -88,44 +88,51 @@ public class StudentController {
     // __________________________________________________________________________________________________________________
 
     @PostMapping("/studenthome")
-    public String UploadPic(HttpSession session, RedirectAttributes redirectAttributes,
-            @ModelAttribute StudentInfoDto studentInfoDto) {
-        if (session.getAttribute("studentid") != null) {
-            try {
-                MultipartFile filedata = studentInfoDto.getProfilepic();
-
-String contentType = fileData.getContentType();
-if (contentType == null || !contentType.startsWith("image/")) {
-    redirectAttributes.addFlashAttribute("msg", "Invalid file type. Only image files (JPEG, PNG) are allowed.");
-    return "redirect:/student/studenthome";
-}
-
-                String storageFileName = new Date().getTime() + "_" + filedata.getOriginalFilename();
-                String uploadDir = "public/user/";
-                Path uploadPath = Paths.get(uploadDir);
-                if (!Files.exists(uploadPath)) {
-                    Files.createDirectories(uploadPath);
-                }
-                try (InputStream inputStream = filedata.getInputStream()) {
-                    Files.copy(inputStream, Paths.get(uploadDir + storageFileName),
-                            StandardCopyOption.REPLACE_EXISTING);
-                }
-
-                StudentInfo studentInfo = srepo.findById(session.getAttribute("studentid").toString()).get();
-                studentInfo.setProfilepic(storageFileName);
-                srepo.save(studentInfo);
-                redirectAttributes.addFlashAttribute("msg", "profile uploaded.");
-
-                return "redirect:/student/studenthome";
-
-            } catch (Exception e) {
-                redirectAttributes.addFlashAttribute("msg", "Someting missing");
+public String uploadPic(HttpSession session, RedirectAttributes redirectAttributes,
+                        @ModelAttribute StudentInfoDto studentInfoDto) {
+    if (session.getAttribute("studentid") != null) {
+        try {
+            MultipartFile fileData = studentInfoDto.getProfilepic();
+            
+            // Validate file type
+            String contentType = fileData.getContentType();
+            if (contentType == null || !contentType.startsWith("image/")) {
+                redirectAttributes.addFlashAttribute("msg", "Invalid file type. Only image files (JPEG, PNG) are allowed.");
                 return "redirect:/student/studenthome";
             }
-        } else {
-            return "redirect:/studentlogin";
+
+            // Generate a unique file name and prepare for upload
+            String storageFileName = new Date().getTime() + "_" + fileData.getOriginalFilename();
+            String uploadDir = "public/user/";
+            Path uploadPath = Paths.get(uploadDir);
+            if (!Files.exists(uploadPath)) {
+                Files.createDirectories(uploadPath);
+            }
+
+            // Save the file
+            try (InputStream inputStream = fileData.getInputStream()) {
+                Files.copy(inputStream, Paths.get(uploadDir + storageFileName),
+                           StandardCopyOption.REPLACE_EXISTING);
+            }
+
+            // Update and save student profile
+            StudentInfo studentInfo = srepo.findById(session.getAttribute("studentid").toString()).orElse(null);
+            if (studentInfo != null) {
+                studentInfo.setProfilepic(storageFileName);
+                srepo.save(studentInfo);
+            }
+
+            redirectAttributes.addFlashAttribute("msg", "Profile uploaded successfully.");
+            return "redirect:/student/studenthome";
+
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("msg", "An error occurred while uploading the profile picture.");
+            return "redirect:/student/studenthome";
         }
+    } else {
+        return "redirect:/studentlogin";
     }
+}
 
     // ________________________________________________________________________________________________________
 
