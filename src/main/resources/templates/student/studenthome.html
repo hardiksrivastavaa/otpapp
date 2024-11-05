@@ -80,7 +80,7 @@
 								<!-- Profile picture upload form -->
 								<div class="row mt-4">
 									<form method="post" th:object="${dto}" enctype="multipart/form-data"
-										class="d-flex justify-content-center">
+										class="d-flex justify-content-center" onsubmit="return validateFileSize()">
 										<!-- Allows the user to upload a new profile picture -->
 										<input type="file" th:field="${dto.profilepic}" class="form-control me-2"
 											required />
@@ -164,6 +164,20 @@
 			</div>
 
 		</div>
+
+<script>
+function validateFileSize() {
+    const fileInput = document.getElementById("profilepic");
+    const file = fileInput.files[0];
+    
+    if (file && file.size > 1 * 1024 * 1024) { // 1MB = 1 * 1024 * 1024 bytes
+        alert("File size is too large! Please upload an image smaller than 1MB.");
+        return false; // Prevent form submission
+    }
+    return true; // Allow form submission
+}
+</script>
+
 	</section>
 </body>
 
