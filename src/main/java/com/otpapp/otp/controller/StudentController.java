@@ -93,6 +93,13 @@ public class StudentController {
         if (session.getAttribute("studentid") != null) {
             try {
                 MultipartFile filedata = studentInfoDto.getProfilepic();
+
+String contentType = fileData.getContentType();
+if (contentType == null || !contentType.startsWith("image/")) {
+    redirectAttributes.addFlashAttribute("msg", "Invalid file type. Only image files (JPEG, PNG) are allowed.");
+    return "redirect:/student/studenthome";
+}
+
                 String storageFileName = new Date().getTime() + "_" + filedata.getOriginalFilename();
                 String uploadDir = "public/user/";
                 Path uploadPath = Paths.get(uploadDir);
